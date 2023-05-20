@@ -1,0 +1,3 @@
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.csproj.AssemblyReference.cache
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.csproj.SuggestedBindingRedirects.cache
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.csproj.CoreCompileInputs.cache
