@@ -1,3 +1,11 @@
 C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.csproj.AssemblyReference.cache
 C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.csproj.SuggestedBindingRedirects.cache
 C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.csproj.CoreCompileInputs.cache
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\bin\Debug\AppmultipleRequest.exe.config
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\bin\Debug\AppmultipleRequest.exe
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\bin\Debug\AppmultipleRequest.pdb
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.csproj.CopyComplete
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.exe
+C:\Users\Hp\source\repos\AppmultipleRequest\AppmultipleRequest\obj\Debug\AppmultipleRequest.pdb

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -6,45 +7,60 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+//using System.Text.Json;
 
 namespace AppmultipleRequest
 {
     public class Program
     {
      
-        public async Task RequestAsync(string username, int password)
+        
+        public async Task RequestAsync(User program)
         {
-
-            var endpoint = "http://localhost:5183";
-            var url = string.Format("{0}?username={1}&password={2}", endpoint, username, password);
+            var endpoint = "http://localhost:5183/api/User";
             var client = new HttpClient();
 
-            var request = new HttpRequestMessage(HttpMethod.Post, url);
+           // string jsonPayload =JsonSerializer.Create.Serialize(program);
+            string jsonPayload = JsonConvert.SerializeObject(program);
+            var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode(); // Throw an exception if error
+            var response = await client.PostAsync(endpoint, content);
+            response.EnsureSuccessStatusCode(); // Throw an exception if an error occurs
 
-            var body = await response.Content.ReadAsStringAsync();
-           // dynamic json = JsonConvert.DeserializeObject(body);
+            var responseBody = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responseBody);
+
 
         }
 
 
-          public static  async Task Main(string[] args)
+        public static  async Task Main(string[] args)
           {
-            string name;int password;
+
+            string name;int Cpassword;
+           
             Console.WriteLine("enter username ");
             name = Console.ReadLine();
             Console.WriteLine("enter password");
-            password = Convert.ToInt32(Console.ReadLine());
+            Cpassword = Convert.ToInt32(Console.ReadLine());
+
+            User user = new User();
+            user.username = name;
+            user.password = Cpassword;
+
             Program test = new Program();
-            Task t = Task.Run(() => test.RequestAsync(name,password));
-            Task t1 = Task.Run(() => test.RequestAsync(name, password));
-            Task t2 = Task.Run(()=>test.RequestAsync(name,password));
-            Task t3 = Task.Run(() => test.RequestAsync(name, password));
-            Task t4 = Task.Run(()=>test.RequestAsync(name, password));
-            await Task.WhenAll(t,t1,t2,t3,t4);
+            Task t = Task.Run(() => test.RequestAsync(user));
+            //Task t1 = Task.Run(() => test.RequestAsync(name, password));
+            //Task t2 = Task.Run(()=>test.RequestAsync(name,password));
+            //Task t3 = Task.Run(() => test.RequestAsync(name, password));
+            //Task t4 = Task.Run(()=>test.RequestAsync(name, password));
+            await Task.WhenAll(t);
         }
+    }
+
+    public class User
+    {
+        public string username { get;set; }
+        public int password { get;set; }
     }
 }
