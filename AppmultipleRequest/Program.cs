@@ -33,6 +33,20 @@ namespace AppmultipleRequest
 
         }
 
+        public async Task RequestGetAsync(string Username)
+        {
+            var endpoint = "http://localhost:5183/api/User";
+            var url = string.Format("{0}?username={1}", endpoint, Username);
+
+            var client = new HttpClient();
+            var response = await client.GetAsync(url);  // Use the 'url' variable here
+            response.EnsureSuccessStatusCode();
+            var responsebody = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responsebody);
+           
+
+        }
+
 
         public static  async Task Main(string[] args)
           {
@@ -41,20 +55,23 @@ namespace AppmultipleRequest
            
             Console.WriteLine("enter username ");
             name = Console.ReadLine();
-            Console.WriteLine("enter password");
-            Cpassword = Convert.ToInt32(Console.ReadLine());
+           // Console.WriteLine("enter password");
+           // Cpassword = Convert.ToInt32(Console.ReadLine());
 
             User user = new User();
             user.username = name;
-            user.password = Cpassword;
+           // user.password = Cpassword;
 
             Program test = new Program();
-            Task t = Task.Run(() => test.RequestAsync(user));
+            //  Task t = Task.Run(() => test.RequestAsync(user));
+            Task t = Task.Run(()=>test.RequestGetAsync(name));
+
             //Task t1 = Task.Run(() => test.RequestAsync(name, password));
             //Task t2 = Task.Run(()=>test.RequestAsync(name,password));
             //Task t3 = Task.Run(() => test.RequestAsync(name, password));
             //Task t4 = Task.Run(()=>test.RequestAsync(name, password));
             await Task.WhenAll(t);
+            Console.ReadLine();
         }
     }
 
