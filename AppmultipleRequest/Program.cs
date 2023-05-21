@@ -64,13 +64,18 @@ namespace AppmultipleRequest
 
             Program test = new Program();
             //  Task t = Task.Run(() => test.RequestAsync(user));
-            Task t = Task.Run(()=>test.RequestGetAsync(name));
+            //  Task t = Task.Run(()=>test.RequestGetAsync(name));
+            Task[] tasks = new Task[5];
+            for (int i=0;i<5;i++)
+            {
+                tasks[i] = Task.Run(() => test.RequestGetAsync(name));
+            }
 
             //Task t1 = Task.Run(() => test.RequestAsync(name, password));
             //Task t2 = Task.Run(()=>test.RequestAsync(name,password));
             //Task t3 = Task.Run(() => test.RequestAsync(name, password));
             //Task t4 = Task.Run(()=>test.RequestAsync(name, password));
-            await Task.WhenAll(t);
+            await Task.WhenAll(tasks);
             Console.ReadLine();
         }
     }
